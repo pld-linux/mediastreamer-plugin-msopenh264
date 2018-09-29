@@ -55,3 +55,13 @@ diff -ur msopenh264-1.1.1/src/msopenh264enc.cpp msopenh264-1.2.1/src/msopenh264e
  			ret = mEncoder->InitializeExt(&params);
  			if (ret != 0) {
  				ms_error("OpenH264 encoder: Failed to initialize: %d", ret);
+--- msopenh264-1.1.1/src/msopenh264enc.h~	2015-09-23 15:14:22.000000000 +0200
++++ msopenh264-1.1.1/src/msopenh264enc.h	2018-09-29 13:18:20.730187249 +0200
+@@ -21,7 +21,6 @@ Foundation, Inc., 59 Temple Place - Suit
+ #include "mediastreamer2/msfilter.h"
+ #include "mediastreamer2/msvideo.h"
+ #include "mediastreamer2/rfc3984.h"
+-#include "mediastreamer2/videostarter.h"
+ #include "wels/codec_api.h"
+ #include "msopenh264.h"
+ 
