@@ -2,11 +2,12 @@ Summary:	H.264 video codec for mediastreamer based on the openh264 library
 Summary(pl.UTF-8):	Kodek obrazu H.264 dla mediastreamera oparty na bibliotece openh264
 Name:		mediastreamer-plugin-msopenh264
 Version:	1.2.1
-Release:	6
+Release:	7
 License:	GPL v2+
 Group:		Libraries
 Source0:	https://linphone.org/releases/sources/plugins/msopenh264/msopenh264-%{version}.tar.gz
 # Source0-md5:	8e4dfaed03dbe10d1b32d70eea23ce9c
+Patch0:		%{name}-openh264.patch
 URL:		http://www.linphone.org/technical-corner/mediastreamer2/overview
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -29,6 +30,7 @@ opartą na bibliotece openh264.
 
 %prep
 %setup -q -n msopenh264-%{version}
+%patch0 -p1
 
 %build
 %{__libtoolize}

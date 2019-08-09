@@ -1,0 +1,22 @@
+--- msopenh264-1.2.1/src/msopenh264dec.cpp.orig	2016-10-19 17:32:52.000000000 +0200
++++ msopenh264-1.2.1/src/msopenh264dec.cpp	2019-08-09 15:28:46.157866126 +0200
+@@ -62,7 +62,7 @@
+ 		mUnpacker=rfc3984_new();
+ 		if (mDecoder != 0) {
+ 			SDecodingParam params = { 0 };
+-#if (OPENH264_MAJOR == 1) && (OPENH264_MINOR >=6)
++#if (OPENH264_MAJOR > 1) || ((OPENH264_MAJOR == 1) && (OPENH264_MINOR >=6))
+ #else
+ 			params.eOutputColorFormat = videoFormatI420;
+ #endif
+--- msopenh264-1.2.1/src/msopenh264enc.cpp.orig	2017-07-20 15:56:32.000000000 +0200
++++ msopenh264-1.2.1/src/msopenh264enc.cpp	2019-08-09 15:30:24.520666582 +0200
+@@ -127,7 +127,7 @@
+ 			params.sSpatialLayers[0].iSpatialBitrate = targetBitrate;
+ 			params.sSpatialLayers[0].iMaxSpatialBitrate = maxBitrate;
+ 
+-#if (OPENH264_MAJOR == 1) && (OPENH264_MINOR >=6)
++#if (OPENH264_MAJOR > 1) || ((OPENH264_MAJOR == 1) && (OPENH264_MINOR >=6))
+ 			params.sSpatialLayers[0].sSliceArgument.uiSliceMode = SM_SIZELIMITED_SLICE;
+ 			params.sSpatialLayers[0].sSliceArgument.uiSliceSizeConstraint = ms_factory_get_payload_max_size(mFilter->factory);
+ #else
