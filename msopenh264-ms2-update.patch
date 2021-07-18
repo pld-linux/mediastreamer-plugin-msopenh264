@@ -1,0 +1,40 @@
+From 87b973e0560a590db0aed0bf657c4e79dfc72f7f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micka=C3=ABl=20Turnel?=
+ <mickael.turnel@belledonne-communications.com>
+Date: Thu, 30 Nov 2017 15:50:17 +0100
+Subject: [PATCH] Fix H264 not using defined MTU
+
+---
+ src/msopenh264dec.cpp | 2 +-
+ src/msopenh264enc.cpp | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/msopenh264dec.cpp b/src/msopenh264dec.cpp
+index 0662246..c13c704 100644
+--- a/src/msopenh264dec.cpp
++++ b/src/msopenh264dec.cpp
+@@ -59,7 +59,7 @@ void MSOpenH264Decoder::initialize()
+ {
+ 	if (!mInitialized) {
+ 		mFirstImageDecoded = false;
+-		mUnpacker=rfc3984_new();
++		mUnpacker=rfc3984_new_with_factory(mFilter->factory);
+ 		if (mDecoder != 0) {
+ 			SDecodingParam params = { 0 };
+ #if (OPENH264_MAJOR == 1) && (OPENH264_MINOR >=6)
+diff --git a/src/msopenh264enc.cpp b/src/msopenh264enc.cpp
+index 66637e7..e9bf1bd 100644
+--- a/src/msopenh264enc.cpp
++++ b/src/msopenh264enc.cpp
+@@ -85,7 +85,7 @@ MSOpenH264Encoder::~MSOpenH264Encoder()
+ void MSOpenH264Encoder::initialize()
+ {
+ 	mFrameCount = 0;
+-	mPacker = rfc3984_new();
++	mPacker = rfc3984_new_with_factory(mFilter->factory);
+ 	if (mPacketisationModeSet)
+ 		rfc3984_set_mode(mPacker, mPacketisationMode);
+ 	else rfc3984_set_mode(mPacker, 1); // in absence of explicit directive from the other end, allow mode 1 because it allows to send big slices which is necessary for large images
+-- 
+GitLab
+
