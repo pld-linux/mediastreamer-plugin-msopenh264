@@ -9,8 +9,8 @@ Group:		Libraries
 #Source0:	https://gitlab.linphone.org/BC/public/msopenh264/-/archive/%{version}/msopenh264-%{version}.tar.bz2
 Source0:	https://linphone.org/releases/old/sources/plugins/msopenh264/msopenh264-%{version}.tar.gz
 # Source0-md5:	8e4dfaed03dbe10d1b32d70eea23ce9c
-Patch0:		%{name}-openh264.patch
-Patch1:		msopenh264-ms2-update.patch
+Patch0:		msopenh264-ms2-update.patch
+Patch1:		%{name}-openh264.patch
 URL:		http://www.linphone.org/technical-corner/mediastreamer2/overview
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
