@@ -1,26 +1,23 @@
 Summary:	H.264 video codec for mediastreamer based on the openh264 library
 Summary(pl.UTF-8):	Kodek obrazu H.264 dla mediastreamera oparty na bibliotece openh264
 Name:		mediastreamer-plugin-msopenh264
-Version:	1.2.1
-Release:	11
+Version:	5.2.0
+Release:	1
 License:	GPL v2+
 Group:		Libraries
 #Source0Download: https://gitlab.linphone.org/BC/public/msopenh264/-/tags
-#Source0:	https://gitlab.linphone.org/BC/public/msopenh264/-/archive/%{version}/msopenh264-%{version}.tar.bz2
-Source0:	https://linphone.org/releases/old/sources/plugins/msopenh264/msopenh264-%{version}.tar.gz
-# Source0-md5:	8e4dfaed03dbe10d1b32d70eea23ce9c
-Patch0:		msopenh264-ms2-update.patch
-Patch1:		%{name}-openh264.patch
-URL:		http://www.linphone.org/technical-corner/mediastreamer2/overview
+Source0:	https://gitlab.linphone.org/BC/public/msopenh264/-/archive/%{version}/msopenh264-%{version}.tar.bz2
+# Source0-md5:	f854bfa3db3244b388571c2359a895ee
+URL:		https://www.linphone.org/technical-corner/mediastreamer2/overview
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	mediastreamer-devel >= 2.14.0
+BuildRequires:	mediastreamer-devel >= 5
 BuildRequires:	openh264-devel >= 1.4.0
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 Requires:	openh264 >= 1.4.0
-Requires:	mediastreamer >= 2.14.0
+Requires:	mediastreamer >= 5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -33,8 +30,6 @@ opartą na bibliotece openh264.
 
 %prep
 %setup -q -n msopenh264-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
