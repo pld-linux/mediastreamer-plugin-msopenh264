@@ -31,7 +31,7 @@ opartą na bibliotece openh264.
 
 %prep
 %setup -q -n msopenh264-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{__libtoolize}
